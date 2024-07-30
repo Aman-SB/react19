@@ -1,6 +1,7 @@
 'use client'
 
 import login from "@/api/login";
+import Button from "@/useStatusForm/Button";
 import React from "react";
 import {useActionState} from 'react';
 
@@ -27,7 +28,6 @@ const ActionForm = () => {
 
 
     return (
-        <div>
     <form action={actionHandler} className="min-h-40 bg-slate-700 flex flex-col gap-y-3" >
         <label htmlFor="username">
             Username :{" "}
@@ -39,15 +39,13 @@ const ActionForm = () => {
             <input type="password" name="password" id="" />
         </label>
 
-        <button type="submit" disabled={isPending}>
-            {isPending ? "Login..." : "Login"}
-        </button>
-    </form>
-    <br />
-    {user?.data && <p className="text-green-400">Login : {user?.data.email}</p>}
-    <br />
+        <Button/>
+
+        {user?.data && <p className="text-green-400">Login : {user?.data.email}</p>}
+
     {user?.error && <p className="text-red-600"> {user?.error} </p> }
-    </div>
+    
+    </form>
     
     )
 };
